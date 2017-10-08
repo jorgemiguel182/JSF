@@ -20,7 +20,7 @@ import br.com.framework.implementacao.crud.VariavelConexaoUtil;
  * Responsavel por estabelecer a conexao com hibernate
  * 
  * @author All
- * 
+ *  
  */
 @ApplicationScoped
 public class HibernateUtil implements Serializable {
