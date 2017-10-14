@@ -9,7 +9,7 @@
 			maxIdle="10"
 			maxWait="10"
 			initialSize="10"
-			driveClassNamer="org.postgresql.Driver"
+			driverClassName="org.postgresql.Driver"
 			validationQuery="SELECT 'OK'"
 			testWhileIdle="true"
 			testOnBorrow="true"
@@ -18,9 +18,9 @@
 			minEvictableIdleTimeMillis="60000"
 			antiJARLocking="false"
 			antiResourceLocking="false"
-			username="Jorjão"
-			password="admin"
-			url="jdbc:postgresql://Localhost:5432/ebook_jee?autoReconect=true"
+			username="postgres"
+			password="123"
+			url="jdbc:postgresql://localhost:5432/ebook_jee"
 			
 	/>
 
