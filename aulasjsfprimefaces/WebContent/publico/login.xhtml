@@ -5,9 +5,76 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF8" />
+	<title><ui:insert name="titulo">Caixaki</ui:insert></title>
 
+	<h:outputScript name="jquery.js" library="primefaces/jquery" />
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputScript name="script.js" library="javascript" />
 </h:head>
+
 <h:body>
-	<h1>Login</h1>
+	<div id="imagemLogin">
+		<h:graphicImage library="img" name="logocaixaaqui.png" styleClass="bordaImagem"/>
+	</div>
+	
+	<div id="keysLogin">
+		<h:graphicImage library="img" name="keys.png" styleClass="bordaImagem" />
+	</div>
+	
+	<div id="formLogin">
+		<br/>
+		
+		<h:panelGroup rendered="#{!empty_param.login_error}">
+			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
+				<span class="estiloSpan">
+					Permissão Negada, login ou senha incorretos.
+				</span>
+			</h:outputLabel>
+			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum sessions of 1 for this principal exceeded'}">
+				<span class="estiloSpan">
+					Você está logado em outra sessão.
+				</span>
+				
+				<h:commandButton value="Encerrar" style="height:40px;width:100px;background:#CDCDC1; border:1px;"
+								onclick="invalidateSession('#{request.contextPath}', '/publico/invalidateSession')" />
+				
+			</h:outputLabel>
+		</h:panelGroup>	
+		
+		<br/>
+		
+		
+		<!-- onsubmit > busca no js a função descrita, se retornar false o formulario nao envia a requisiçao do login  -->
+		<form id="formulario" method="post" name="formulario"			
+			onsubmit="return validarSenhaLogin();"
+			action="#{request.contextPath}/j_spring_security_check">
+			
+			<span style="display:block; padding-top: 2px; text-align: right;">
+				<span style="display: inline-block; width: 50px; text-align: left;">
+					Login				
+				</span>				
+				<input type="text" name="j_username" id="j_username"/>
+			</span>
+			
+			<span style="display: block; padding-top: 2px; text-align: right;">
+				<span style="display: inline-block; width: 50px; text-align: left;">
+					Senha
+				</span>
+				<input type="password" name="j_password" id="j_password"/>
+			</span>
+			
+			<span style="display: block; padding-top: 2px; text-align: right">
+				<button type="submit" class="blue"
+					style="height: 40px; width: 100px; background: #CDCDC1; border: 1px" id="buttonLogin">
+					Entrar
+				</button>			
+			</span>			
+			
+		</form>		
+	</div>
+<script>	
+	$('#j_username').focus();
+</script>
 </h:body>
 </html>

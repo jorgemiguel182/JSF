@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 	http://www.springframework.org/schema/beans
@@ -41,8 +43,7 @@
 		</property>
 	</bean>
 
-	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate"
-		lazy-init="false">
+	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" lazy-init="false">
 		<property name="dataSource" ref="springDataSource" />
 		<property name="baselineOnMigrate" value="true" />
 		<property name="table" value="version" />
@@ -106,16 +107,26 @@
 		<property name="scopes">
 			<map>
 				<entry key="view">
-					<bean class="br.com.project.bean.geral.ViewCope"/>
+					<bean class="br.com.project.bean.geral.ViewScope"/>
 				</entry>
 			</map>			
 		</property>		
 	</bean>
 	
 	<bean id="reportUtil" class="br.com.project.report.util.ReportUtil"/>
-	
 	<bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/>
 	
+	
+	
+	<!-- Services -->
+	<bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl" />
+	
+	<!-- DAOS  -->
+	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" />
+	
+	
+	<!-- Controllers -->
+	<bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"  />
 	
 	
 
