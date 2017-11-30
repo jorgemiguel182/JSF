@@ -265,6 +265,6 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 		T obj = (T) this.findUniqueByQueryDinamica(query.toString());
 
-		return null;
+		return obj;
 	}
 }

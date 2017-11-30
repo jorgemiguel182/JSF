@@ -9,6 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
@@ -58,9 +59,9 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements
 
 			// captura o usuario que faz a operação
 			HttpServletRequest request2 = (HttpServletRequest) request;
+			HttpServletResponse response2 = (HttpServletResponse) response;
 			HttpSession sessao = request2.getSession();
-			Entidade userLogadoSessao = (Entidade) sessao
-					.getAttribute("userLogadoSessao");
+			Entidade userLogadoSessao = (Entidade) sessao.getAttribute("userLogadoSessao");
 
 			if (userLogadoSessao != null) {
 				UtilFramework.getThreadLocal().set(

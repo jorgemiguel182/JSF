@@ -58,7 +58,7 @@ public class ContextoBean implements Serializable{
 	}
 	
 	
-	private String getUserPrincipal() {		
+	public String getUserPrincipal() {		
 		return getExternalContext().getUserPrincipal().getName();
 	}
 

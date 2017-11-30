@@ -22,15 +22,15 @@ implements InterfaceCrud<Entidade>{
 	
 	public Entidade findUserLogado(String userLogado) throws Exception{
 		return super.findUniqueByProperty(Entidade.class, 
-				userLogado, "ent_login", " and entity.ent_inativo is false");
+				userLogado, "ent_login", " and entity.ent_inativo is false ");
 	}
 	
 	public Date getUltimoAcessoEntidadeLogada(String login){
 		return srvEntidade.getUltimoAcessoEntidadeLogada(login);
 	}
 	
-	public void updateUltimoAcessoUser(String name){
-		srvEntidade.updateUltimoAcessoUser(name);
+	public void updateUltimoAcessoUser(String login){
+		srvEntidade.updateUltimoAcessoUser(login);
 	}
 	
 }

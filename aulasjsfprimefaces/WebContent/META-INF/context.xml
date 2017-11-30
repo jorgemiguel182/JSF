@@ -20,7 +20,7 @@
 			antiResourceLocking="false"
 			username="postgres"
 			password="123"
-			url="jdbc:postgresql://localhost:5432/ebook_jee"
+			url="jdbc:postgresql://localhost:5433/ebook_jee"
 			
 	/>
 
